@@ -41,7 +41,7 @@ public class TabFragment3 extends Fragment {
                     volleyApplication.NAME2 = naMe2.getText().toString();
                     volleyApplication.ENTRY2 = enTry2.getText().toString();
                     volleyApplication.posting(getActivity(),progressBar);
-                    //progressBar.setVisibility(View.INVISIBLE);
+
                 }
             });
         }
