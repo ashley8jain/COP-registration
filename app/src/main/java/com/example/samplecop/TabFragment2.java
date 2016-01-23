@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 public class TabFragment2 extends Fragment {
 
+    EditText naMe3,enTry3;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.tab_fragment_2, container, false);
@@ -19,14 +20,31 @@ public class TabFragment2 extends Fragment {
         super.onStart();
         View view = getView();
         if(view!=null){
-            EditText editText = (EditText) view.findViewById(R.id.name2);
-            EditText editText2 = (EditText) view.findViewById(R.id.entry2);
+             naMe3 = (EditText) view.findViewById(R.id.name2);
+             enTry3 = (EditText) view.findViewById(R.id.entry2);
 
-            editText.addTextChangedListener(new checkError(editText));
-            editText2.addTextChangedListener(new checkError(editText2));
+            naMe3.addTextChangedListener(new checkError(naMe3));
+            enTry3.addTextChangedListener(new checkError(enTry3));
         }
+        naMe3.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus == false)
+                    volleyApplication.NAME3 = naMe3.getText().toString();
+            }
+
+        });
+        enTry3.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus == false)
+                    volleyApplication.ENTRY3 = enTry3.getText().toString();
+            }
+        });
 
     }
+
+
 
     /*@Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
