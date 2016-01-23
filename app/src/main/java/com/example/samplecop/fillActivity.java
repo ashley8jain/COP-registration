@@ -1,31 +1,31 @@
 package com.example.samplecop;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.EditText;
 
 public class fillActivity extends AppCompatActivity {
 
+    public final static String TEAM_NAME = "team_name";
+    public final static String TEAM_NO = "team_no";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fill);
+        Intent intent = getIntent();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Individual Details");
-        getSupportActionBar().setTitle("");
-        Bundle bundle = getIntent().getExtras();
-        String fragments = bundle.getString("fragments");
-        int fragment_count = Integer.parseInt(fragments);
-//        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setTitle(intent.getStringExtra(TEAM_NAME));
+
+        String teamNo = intent.getStringExtra(TEAM_NO);
+        int fragment_count = Integer.parseInt(teamNo);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         if(fragment_count == 2) {
@@ -40,10 +40,10 @@ public class fillActivity extends AppCompatActivity {
             tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         }
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        final PagerAdapter adapter = new PagerAdapter
-                (getSupportFragmentManager(), tabLayout.getTabCount());
+        final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -61,25 +61,5 @@ public class fillActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
-
-
-
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }*/
 }
