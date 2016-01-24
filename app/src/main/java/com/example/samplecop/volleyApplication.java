@@ -2,13 +2,12 @@ package com.example.samplecop;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
-import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -37,7 +36,7 @@ public class volleyApplication {
     public static String NAME3;
 
     static String url ="http://agni.iitd.ernet.in/cop290/assign0/register/" ; //POST url
-    public static void posting(final Context context, final ProgressBar pb) {
+    public static void posting(final Context context, final ProgressDialog pdialog) {
 
         if(isEmpty(ENTRY1)||isEmpty(ENTRY2)||isEmpty(NAME1)||isEmpty(NAME2)) {
 
@@ -50,7 +49,7 @@ public class volleyApplication {
             else if(isEmpty(NAME2))
                 AlertDialog("Name 3 is empty", context);
 
-            pb.setVisibility(View.INVISIBLE);
+            pdialog.dismiss();
 
         }
         else if(!isNetworkConnected(context)){
@@ -73,14 +72,7 @@ public class volleyApplication {
                                 AlertDialog.Builder build2 = new AlertDialog.Builder(context)
                                         .setTitle("Result")
                                         .setMessage(message)
-                                        .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                //exit app
-
-                                            }
-                                        })
-                                        .setPositiveButton("Register for another team", new DialogInterface.OnClickListener() {
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
                                                 System.exit(0);
@@ -88,7 +80,7 @@ public class volleyApplication {
                                         });
                                 AlertDialog dialog = build2.create();
                                 dialog.show();
-                                pb.setVisibility(View.INVISIBLE);
+                                pdialog.dismiss();
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -100,7 +92,7 @@ public class volleyApplication {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Toast.makeText(context, error.toString(), Toast.LENGTH_LONG).show();
-                            pb.setVisibility(View.INVISIBLE);
+                            pdialog.dismiss();
                         }
                     }
             ) {

@@ -1,5 +1,6 @@
 package com.example.samplecop;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -25,10 +26,8 @@ public class TabFragment3 extends Fragment {
         if(view!=null){
             naMe2 = (EditText) view.findViewById(R.id.name3);
             enTry2 = (EditText) view.findViewById(R.id.entry3);
-            progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
-            Button registerbutton = (Button) view.findViewById(R.id.btn_login);
 
-            progressBar.setVisibility(View.INVISIBLE);
+            Button registerbutton = (Button) view.findViewById(R.id.btn_login);
 
             naMe2.addTextChangedListener(new checkError(naMe2));
             enTry2.addTextChangedListener(new checkError(enTry2));
@@ -37,10 +36,11 @@ public class TabFragment3 extends Fragment {
             registerbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    progressBar.setVisibility(View.VISIBLE);
+
+                    ProgressDialog dialog = ProgressDialog.show(getActivity(),"","Loading.Please wait...",true);
                     volleyApplication.NAME2 = naMe2.getText().toString();
                     volleyApplication.ENTRY2 = enTry2.getText().toString();
-                    volleyApplication.posting(getActivity(),progressBar);
+                    volleyApplication.posting(getActivity(),dialog);
 
                 }
             });
