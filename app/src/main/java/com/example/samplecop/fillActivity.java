@@ -20,6 +20,7 @@ public class fillActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Individual Details");
+
         String team_name = intent.getStringExtra(TEAM_NAME); //retrieving team name from intent
 
         getSupportActionBar().setTitle(team_name);
@@ -32,13 +33,11 @@ public class fillActivity extends AppCompatActivity {
         if(fragment_count == 2) {
             tabLayout.addTab(tabLayout.newTab().setText("Person 1"));
             tabLayout.addTab(tabLayout.newTab().setText("Person 2"));
-            tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         }
         else {
             tabLayout.addTab(tabLayout.newTab().setText("Person 1"));
             tabLayout.addTab(tabLayout.newTab().setText("Person 2"));
             tabLayout.addTab(tabLayout.newTab().setText("Person 3"));
-            tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         }
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
@@ -63,4 +62,5 @@ public class fillActivity extends AppCompatActivity {
         });
 
     }
+
 }

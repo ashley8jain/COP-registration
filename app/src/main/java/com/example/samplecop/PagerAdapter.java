@@ -5,38 +5,38 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
-    int mNumOfTabs;
+    int NumOfTabs;
 
     public PagerAdapter(FragmentManager fm, int NumOfTabs) {
         super(fm);
-        this.mNumOfTabs = NumOfTabs;
+        this.NumOfTabs = NumOfTabs;
     }
 
     @Override
     public Fragment getItem(int position) {
 
-        switch (position) {
-            case 0:
-                TabFragment1 tab1 = new TabFragment1();
-                return tab1;
-            case 1:
-                if(mNumOfTabs==3){
-                TabFragment2 tab2 = new TabFragment2();
-                return tab2;}
-                else {
-                    TabFragment3 tab2 = new TabFragment3();
-                    return tab2;
-                }
-            case 2:
-                TabFragment3 tab3 = new TabFragment3();
-                return tab3;
-            default:
-                return null;
+        if(position == 0) {
+            TabFragment1 tab1 = new TabFragment1();
+            return tab1;
         }
+        if (position == 1) {
+            if (NumOfTabs == 3) {
+                TabFragment2 tab2 = new TabFragment2();
+                return tab2;
+            } else {
+                TabFragment3 tab2 = new TabFragment3();
+                return tab2;
+            }
+        }
+        if (position == 2) {
+            TabFragment3 tab3 = new TabFragment3();
+            return tab3;
+        }
+                return null;
     }
 
     @Override
     public int getCount() {
-        return mNumOfTabs;
+        return NumOfTabs;
     }
 }

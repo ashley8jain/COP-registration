@@ -16,6 +16,7 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
 
+
         <ImageView android:src="@drawable/logo_main"
             android:layout_width="72dp"
             android:layout_height="72dp"
@@ -32,12 +33,12 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:hint="Team Name"
-                android:drawablePadding="8dp"
+                android:drawablePadding="10dp"
                 android:drawableLeft="@drawable/ic_wc_black_18dp"/>
 
         </android.support.design.widget.TextInputLayout>
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="2dp">
@@ -54,11 +55,11 @@
             <fr.ganfra.materialspinner.MaterialSpinner
                 android:id="@+id/spinner1"
                 android:layout_height="wrap_content"
-                app:ms_arrowColor="#0000FF"
+                app:ms_arrowColor="@color/colorPrimary"
                 app:ms_arrowSize="16dp"
-                app:ms_floatingLabelColor="#00FF00"
-                app:ms_floatingLabelText="No. Members"
-                app:ms_hint="No. Members"
+                app:ms_floatingLabelColor="@color/colorAccent"
+                app:ms_floatingLabelText="No.Members"
+                app:ms_hint="No.Members"
                 app:ms_multiline="true"
                 android:layout_gravity="center_horizontal"
                 android:entries="@array/spinner_entries"
