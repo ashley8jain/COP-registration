@@ -24,11 +24,6 @@ public class TabFragment3 extends Fragment {
 
             editText.addTextChangedListener(new checkError(editText));
             editText2.addTextChangedListener(new checkError(editText2));
-            //checkError nameError = new checkError(editText,editText2);
-            //checkError entryNoError = new checkError(editText2);
-
-            // nameError.nameListener();
-            //entryNoError.entryNoListener();
         }
 
     }
