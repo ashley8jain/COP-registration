@@ -1,12 +1,11 @@
 package com.example.samplecop;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.EditText;
 
 public class fillActivity extends AppCompatActivity {
 
@@ -21,8 +20,12 @@ public class fillActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Individual Details");
+        String team_name = intent.getStringExtra(TEAM_NAME);
 
-        getSupportActionBar().setTitle(intent.getStringExtra(TEAM_NAME));
+        getSupportActionBar().setTitle(team_name);
+
+        volleyApplication.TEAMNAME = team_name;
+
 
         String teamNo = intent.getStringExtra(TEAM_NO);
         int fragment_count = Integer.parseInt(teamNo);
