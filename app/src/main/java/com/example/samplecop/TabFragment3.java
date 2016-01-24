@@ -28,7 +28,7 @@ public class TabFragment3 extends Fragment {
             naMe2 = (EditText) view.findViewById(R.id.name3);
             enTry2 = (EditText) view.findViewById(R.id.entry3);
             progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
-            Button registerbutton = (Button) view.findViewById(R.id.btn_login);
+            Button registerbutton = (Button) view.findViewById(R.id.registerbutton);
             progressBar.setVisibility(View.INVISIBLE);
 
             naMe2.addTextChangedListener(new checkError(naMe2));    //calls error checking class on each edittext element
