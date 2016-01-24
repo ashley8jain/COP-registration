@@ -34,7 +34,8 @@ public class TabFragment1 extends Fragment {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count,
                                           int after) {
-                // TODO Auto-generated method stub
+                if (editText.getText().toString().equalsIgnoreCase(""))
+                    editText.setError("Field cannot be left blank.");
 
             }
 
