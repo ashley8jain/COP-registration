@@ -52,15 +52,6 @@
         android:onClick="onClick"
         android:indeterminate="false" />
 
-    <ProgressBar
-        android:layout_width="164dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
-        android:layout_gravity="center_horizontal"
-        android:indeterminate="false"
-        android:background="#4757b8"
-        android:layout_weight="0.39" />
-
 
 </LinearLayout>
     </ScrollView>
