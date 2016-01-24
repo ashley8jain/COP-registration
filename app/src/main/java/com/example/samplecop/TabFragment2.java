@@ -23,14 +23,14 @@ public class TabFragment2 extends Fragment {
              naMe3 = (EditText) view.findViewById(R.id.name2);
              enTry3 = (EditText) view.findViewById(R.id.entry2);
 
-            naMe3.addTextChangedListener(new checkError(naMe3));
-            enTry3.addTextChangedListener(new checkError(enTry3));
+            naMe3.addTextChangedListener(new checkError(naMe3));    //calls error checking class on each edittext element
+            enTry3.addTextChangedListener(new checkError(enTry3));  //calls error checking class on each edittext element
         }
         naMe3.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus == false)
-                    volleyApplication.NAME3 = naMe3.getText().toString();
+                    volleyApplication.NAME3 = naMe3.getText().toString();   //conveys values to volley class each time the focus shifts
             }
 
         });
@@ -43,20 +43,4 @@ public class TabFragment2 extends Fragment {
         });
 
     }
-
-
-
-    /*@Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-
-        EditText editText = (EditText)view.findViewById(R.id.name2);
-        EditText editText2 = (EditText)view.findViewById(R.id.entry2);
-
-        editText.addTextChangedListener(new checkError(editText,editText2));
-        editText2.addTextChangedListener(new checkError(editText,editText2));
-
-        //checkError nameError = new checkError(editText, editText2);
-        //checkError entryNoError = new checkError(editText2);
-
-    }*/
 }

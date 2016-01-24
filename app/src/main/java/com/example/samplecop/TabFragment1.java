@@ -24,22 +24,22 @@ public class TabFragment1 extends Fragment {
              naMe1 = (EditText) view.findViewById(R.id.name1);
              enTry1 = (EditText) view.findViewById(R.id.entry1);
 
-            naMe1.addTextChangedListener(new checkError(naMe1));
-            enTry1.addTextChangedListener(new checkError(enTry1));
+            naMe1.addTextChangedListener(new checkError(naMe1));    //calls error checking class on each edittext element
+            enTry1.addTextChangedListener(new checkError(enTry1));  //calls error checking class on each edittext element
         }
         naMe1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus == false)
-                    volleyApplication.NAME1 = naMe1.getText().toString();
+                if(!hasFocus)
+                    volleyApplication.NAME1 = naMe1.getText().toString();   //conveys values to volley class each time the focus shifts
             }
 
         });
         enTry1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus == false)
-                    volleyApplication.ENTRY1 = enTry1.getText().toString();
+                if(!hasFocus)
+                    volleyApplication.ENTRY1 = enTry1.getText().toString(); //conveys values to volley class each time the focus shifts
             }
         });
 

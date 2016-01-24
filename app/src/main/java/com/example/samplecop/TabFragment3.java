@@ -29,13 +29,13 @@ public class TabFragment3 extends Fragment {
             Button registerbutton = (Button) view.findViewById(R.id.btn_login);
             progressBar.setVisibility(View.INVISIBLE);
 
-            naMe2.addTextChangedListener(new checkError(naMe2));
-            enTry2.addTextChangedListener(new checkError(enTry2));
+            naMe2.addTextChangedListener(new checkError(naMe2));    //calls error checking class on each edittext element
+            enTry2.addTextChangedListener(new checkError(enTry2));  //calls error checking class on each edittext element
 
 
             registerbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {               //Listens for register button click and starts the volley class
                     progressBar.setVisibility(View.VISIBLE);
                     volleyApplication.NAME2 = naMe2.getText().toString();
                     volleyApplication.ENTRY2 = enTry2.getText().toString();

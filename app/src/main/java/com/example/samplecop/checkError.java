@@ -18,12 +18,11 @@ public class checkError implements TextWatcher {
     //EditText editTextII;
 
     private static boolean checkValid(String entry){
-        return entry.matches("20\\d{2}[a-zA-Z]{2}\\d{5}");
+        return entry.matches("20[0-2]\\d[a-zA-Z]{2}\\d{5}");  //checks if the entry no matches the required pattern (2000-2020 entry undergrads)
     }
 
-    public checkError(EditText nameEdText ){
+    public checkError(EditText nameEdText ){            //Class constructor takes an edittext element as an argument
         this.editTextI = nameEdText;
-        //this.editTextII = entryEdText;
         if(editTextI.getText().toString().length()==0){editTextI.setError("field cannot be left blank");}
     }
 
@@ -39,12 +38,12 @@ public class checkError implements TextWatcher {
 
         if(editTextI.getId()== R.id.entry1 | editTextI.getId()== R.id.entry2 | editTextI.getId()== R.id.entry3){
             if(!checkValid(editTextI.getText().toString())){
-                editTextI.setError("Please enter a valid entry no.");
+                editTextI.setError("Please enter a valid entry no.");  //sets error if entry no validation returns false
             }
         }
         else{
             if(editTextI.getText().toString().length()==0){
-                editTextI.setError("Field cannot be left blank.");
+                editTextI.setError("Field cannot be left blank.");  //sets error if field is left blank
             }
         }
     }

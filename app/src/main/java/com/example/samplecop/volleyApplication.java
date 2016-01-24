@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -36,6 +38,7 @@ public class volleyApplication {
     public static String NAME2;
     public static String NAME3;
 
+
     static String url ="http://agni.iitd.ernet.in/cop290/assign0/register/" ; //POST url
     public static void posting(final Context context, final ProgressBar pb) {
 
@@ -54,7 +57,18 @@ public class volleyApplication {
 
         }
         else if(!isNetworkConnected(context)){
-            AlertDialog("Network connection is not available",context);
+            AlertDialog.Builder alertbuilder = new AlertDialog.Builder(context);
+            alertbuilder.setTitle("No Network Connection");
+            alertbuilder.setCancelable(true);
+            alertbuilder.setPositiveButton("Go to wifi settings",new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog,int id) {
+                    Intent intent = new Intent(Settings.ACTION_WIFI_SETTINGS);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            });
+            AlertDialog alertDialog = alertbuilder.create();
+            alertDialog.show();
         }
         else{
 
